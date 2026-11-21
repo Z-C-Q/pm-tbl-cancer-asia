@@ -1,0 +1,60 @@
+{
+  "original_source_files": [
+    {
+      "source_filename": "48.csv",
+      "bytes": 61255101,
+      "sha256": "86088df3f17816d29fcfe542839ca077ade13f85904eaa1b57135a775b4a9585",
+      "release_label": "GBD 2023, as recorded in the author study",
+      "download_timestamp": null,
+      "upstream_export_job_id": null
+    },
+    {
+      "source_filename": "hale_90-23.csv",
+      "bytes": 60042001,
+      "sha256": "30a12e84df604712c88b5e6367c0f7e764c35f4918d4aeba95d0fda133489e79",
+      "release_label": "GBD 2023, as recorded in the author study",
+      "download_timestamp": null,
+      "upstream_export_job_id": null
+    },
+    {
+      "source_filename": "population.csv",
+      "bytes": 714517341,
+      "sha256": "730694eef41a548548395aa45b5feaa43a68e8167ea75f37a50600aa2642ce50",
+      "release_label": "GBD 2023, as recorded in the author study",
+      "download_timestamp": null,
+      "upstream_export_job_id": null
+    }
+  ],
+  "notes": [
+    "Hashes refer to the original author source files, not freshly downloaded extracts.",
+    "Original download timestamps and export job IDs are unavailable.",
+    "Compact files are derived by the documented filtering script."
+  ],
+  "compact_input_files": [
+    {
+      "file": "gbd_all_age_dalys.csv",
+      "bytes": 609740,
+      "sha256": "fcec11aa7cb1469e4d43bb806a824473132f7539ffe682dcf5faf288437c250c"
+    },
+    {
+      "file": "gbd_burden_both_sexes.csv.gz",
+      "bytes": 2391304,
+      "sha256": "afe963a4939b3e9297e2f4e028a7676e23366cce4dc064fc4db5fecc123965ee"
+    },
+    {
+      "file": "hale_all_age.csv",
+      "bytes": 280162,
+      "sha256": "785b35dc1883abf95ef1ce50f26ebc51bd7426571c20d53f25ef9fb189957275"
+    },
+    {
+      "file": "population_age_specific_both_sexes.csv.gz",
+      "bytes": 695831,
+      "sha256": "49fe0591525d60497f2a3044a369af2248b136ecdb7f963a3bb2f90546b1fac2"
+    },
+    {
+      "file": "population_all_age.csv",
+      "bytes": 125188,
+      "sha256": "bb71a974dc23fe1d1de37a913d6b2caada05bc7ab11b63e7c52f437a4be47b5f"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+.DS_Store
+._*
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+__pycache__/
+*.pyc
+.venv/
+Results/
+# Licensed inputs and row-level GBD-derived exports are kept outside this public repository.
+Data/Inputs/*.csv
+Data/Inputs/*.csv.gz
+!Data/Inputs/*_schema.csv
+Data/Inputs/*.rds
+Data/Derived/*.csv
+Data/Derived/*.csv.gz
+!Data/Derived/*_schema.csv
+Sources/Refresh*/
+*.zip
+*.log

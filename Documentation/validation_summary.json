@@ -1,0 +1,12 @@
+{
+  "release": "2026-11-20",
+  "independent_checks": 21,
+  "all_passed": true,
+  "matched_reference_tables": 21,
+  "compact_input_tables_reextracted": 5,
+  "primary_rows": 4548,
+  "six_scenario_rows": 27288,
+  "independent_python_matches_R": true,
+  "publication_figure_sets": 14,
+  "remote_uploaded": false
+}

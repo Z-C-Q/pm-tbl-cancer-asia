@@ -1,0 +1,11 @@
+parameter,value
+VSL_USA_2023,13200000
+GDPpc_USA_2023_constant2021,74351.6718197429
+GDPpc_USA_2023_rebased2023,82586.78477078915
+US_deflator_2021,104.562972826319
+US_deflator_2023,116.144257693854
+price_rebasing_factor,1.110758947976467
+HALE_multiplier,0.5
+primary_income_elasticity,1
+study_countries,45
+balanced_panel_countries,43

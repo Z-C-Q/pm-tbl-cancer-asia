@@ -1,0 +1,33 @@
+field,definition
+location_id,GBD location identifier; join key
+location_name,GBD country name
+ISO3,WDI country code; Palestine uses PSE
+region_6,Study's six-subregion classification; see country mapping
+year,"Calendar year, 1990–2023"
+sex_id,"GBD identifier: 1 Male, 2 Female, 3 Both"
+sex_name,"Male, Female, Both"
+DALYs,"PM-attributable TBL cancer DALY count, all ages, sex-specific"
+HALE,"Country-year-sex healthy life expectancy, years, source all-age row"
+GDP_per_capita_const2021,"Native WDI `NY.GDP.PCAP.PP.KD`, constant 2021 international dollars per person"
+GDP_per_capita,"The preceding WDI series multiplied by K, constant 2023 international dollars per person"
+GDP_const2021,"Native WDI `NY.GDP.MKTP.PP.KD`, constant 2021 international dollars; retained in the primary/Python export"
+GDP,Total GDP rebased to constant 2023 international dollars; same total used for every sex
+WDI_population,"WDI `SP.POP.TOTL`; audit field, not the GBD population denominator"
+population,GBD all-age population for the matching country-year-sex
+VSL,"Income-transferred statistical life value, constant 2023 international dollars"
+VSLY,"VSL divided by `HALE × hale_factor`, constant 2023 international dollars per healthy life year"
+VLW,"DALYs × VSLY, constant 2023 international dollars"
+VLW_GDP,VLW/GDP as a fraction; 0.01 means 1%
+VLW_GDP_pct,100 × VLW/GDP; 1 means 1%
+per_capita_VLW,"VLW/population, constant 2023 international dollars per person"
+VLW_per_capita,Original R variable name; same value as `per_capita_VLW`
+epsilon,"Income elasticity: 0.5, 1, 1.5"
+hale_factor,0.5 for primary HALE/2 denominator; 1 for full HALE denominator
+hale_convention,`HALE/2 primary` or `HALE sensitivity`
+monetary_unit,Constant 2023 international dollars
+valuation_available,Whether income and total GDP are available; full input file preserves unavailable rows
+gbd_all_age_dalys.csv,"`location_id, year, sex_id`; 4,590 rows, all-age DALY counts and source marginal bounds"
+hale_all_age.csv,"`location_id, year, sex_id`; 4,590 rows; HALE with source bounds"
+population_all_age.csv,"`location_id, year, sex_id`; 4,590 rows; sex-specific all-age population"
+gbd_burden_both_sexes.csv.gz,"`location_id, year, age_id, metric_name`; 76,500 source rows, both sexes, age-specific and all-age/standardized rows"
+population_age_specific_both_sexes.csv.gz,"`location_id, year, age_id`; 61,200 source rows, both-sex population"

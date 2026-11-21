@@ -1,0 +1,31 @@
+#!/usr/bin/env Rscript
+# Convert legitimately obtained source exports into the five compact input tables.
+suppressPackageStartupMessages({library(data.table);library(dplyr);library(readr)})
+argv <- commandArgs(trailingOnly=FALSE)
+repo <- dirname(dirname(normalizePath(sub('^--file=','',grep('^--file=',argv,value=TRUE)[1]),mustWork=TRUE)))
+args <- commandArgs(trailingOnly=TRUE)
+get_arg <- function(flag) {
+ i <- match(flag,args)
+ if(is.na(i)||i==length(args)) stop('Required: --burden FILE --hale FILE --population FILE --output-dir NEW_DIRECTORY')
+ args[i+1]
+}
+burden_path <- get_arg('--burden');hale_path <- get_arg('--hale');pop_path <- get_arg('--population');out <- get_arg('--output-dir')
+if(dir.exists(out)&&length(list.files(out,all.files=TRUE,no..=TRUE))) stop('Output directory must be empty or new.')
+dir.create(out,recursive=TRUE,showWarnings=FALSE)
+locs <- read_csv(file.path(repo,'Sources/country_region_mapping_45.csv'),show_col_types=FALSE)
+rawall <- fread(burden_path) %>% as.data.frame() %>% filter(measure_id==2,year%in%1990:2023,location_id%in%locs$location_id) %>% select(-any_of(c('V1','region_6'))) %>% left_join(locs %>% select(location_id,region_6),by='location_id')
+stopifnot(n_distinct(rawall$rei_id)==1,unique(rawall$rei_id)==86,n_distinct(rawall$cause_id)==1,unique(rawall$cause_id)==426)
+a <- rawall %>% filter(age_id==22,metric_name=='Number') %>% select(location_id,location_name,region_6,sex_id,sex_name,cause_id,cause_name,year,DALYs=val,DALYs_lower=lower,DALYs_upper=upper)
+hale <- fread(hale_path) %>% as.data.frame() %>% filter(location_id%in%locs$location_id,year%in%1990:2023,age_id==22,metric_name=='Years') %>% select(location_id,year,sex_id,HALE=val,HALE_lower=lower,HALE_upper=upper)
+popraw <- fread(pop_path,select=c('location_id','year','sex_id','sex_name','age_id','metric_name','val'))
+popall <- popraw[location_id%in%locs$location_id & year%in%1990:2023 & age_id==22 & metric_name=='Number'] %>% as.data.frame() %>% select(location_id,year,sex_id,population=val)
+pop <- popraw[location_id%in%locs$location_id & year%in%1990:2023 & sex_name=='Both' & metric_name=='Number'] %>% as.data.frame() %>% select(location_id,year,age_id,population=val)
+raw <- rawall %>% filter(sex_name=='Both')
+for(x in list(a,hale,popall)) stopifnot(nrow(x)==4590,!anyDuplicated(x[c('location_id','year','sex_id')]))
+stopifnot(nrow(raw)==76500,nrow(pop)==61200)
+write_csv(a,file.path(out,'gbd_all_age_dalys.csv'))
+write_csv(hale,file.path(out,'hale_all_age.csv'))
+write_csv(popall,file.path(out,'population_all_age.csv'))
+write_csv(raw,file.path(out,'gbd_burden_both_sexes.csv.gz'))
+write_csv(pop,file.path(out,'population_age_specific_both_sexes.csv.gz'))
+cat('Created five compact input files in',out,'\n')

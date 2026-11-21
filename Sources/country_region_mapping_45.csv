@@ -1,0 +1,46 @@
+location_id,location_name,region_6,Country.Code
+6,China,East Asia,CHN
+35,Georgia,Middle East,GEO
+37,Kyrgyzstan,Central Asia,KGZ
+38,Mongolia,East Asia,MNG
+39,Tajikistan,Central Asia,TJK
+11,Indonesia,Southeast Asia,IDN
+36,Kazakhstan,Central Asia,KAZ
+19,Timor-Leste,Southeast Asia,TLS
+20,Viet Nam,Southeast Asia,VNM
+66,Brunei Darussalam,High-income Asia Pacific,BRN
+13,Malaysia,Southeast Asia,MYS
+15,Myanmar,Southeast Asia,MMR
+16,Philippines,Southeast Asia,PHL
+40,Turkmenistan,Central Asia,TKM
+41,Uzbekistan,Central Asia,UZB
+10,Cambodia,Southeast Asia,KHM
+33,Armenia,Middle East,ARM
+14,Maldives,South Asia,MDV
+17,Sri Lanka,South Asia,LKA
+34,Azerbaijan,Middle East,AZE
+12,Lao People's Democratic Republic,Southeast Asia,LAO
+18,Thailand,Southeast Asia,THA
+69,Singapore,High-income Asia Pacific,SGP
+67,Japan,High-income Asia Pacific,JPN
+142,Iran (Islamic Republic of),Middle East,IRN
+77,Cyprus,Middle East,CYP
+155,Turkey,Middle East,TUR
+150,Oman,Middle East,OMN
+156,United Arab Emirates,Middle East,ARE
+68,Republic of Korea,High-income Asia Pacific,KOR
+163,India,South Asia,IND
+85,Israel,Middle East,ISR
+164,Nepal,South Asia,NPL
+140,Bahrain,Middle East,BHR
+145,Kuwait,Middle East,KWT
+144,Jordan,Middle East,JOR
+161,Bangladesh,South Asia,BGD
+151,Qatar,Middle East,QAT
+152,Saudi Arabia,Middle East,SAU
+146,Lebanon,Middle East,LBN
+162,Bhutan,South Asia,BTN
+165,Pakistan,South Asia,PAK
+143,Iraq,Middle East,IRQ
+149,Palestine,Middle East,PSE
+160,Afghanistan,South Asia,AFG

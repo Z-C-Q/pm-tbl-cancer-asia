@@ -1,0 +1,7 @@
+suppressPackageStartupMessages({library(dplyr);library(tidyr);library(readr)});out<-getOption('tbl.results_dir');d<-readRDS(file.path(out,'Data/prepared_inputs.rds'))
+z<-d$raw%>%filter(!is.na(region_6),age_id%in%d$w1$age_id,metric_name%in%c('Number','Rate'))%>%select(location_id,location_name,region_6,year,age_id,age_name,metric_name,val)%>%pivot_wider(names_from=metric_name,values_from=val)%>%left_join(d$pop%>%select(location_id,year,age_id,population),by=c('location_id','year','age_id'))%>%mutate(ratio=Number/population*1e5/Rate,GBD_implied_pop=Number/Rate*1e5)
+stopifnot(all(z$Rate>0),!anyNA(z$population))
+write_csv(z,file.path(out,'QA/population_rate_consistency.csv'))
+a<-bind_rows(z%>%group_by(region=region_6,year,age_id)%>%summarise(DALYs=sum(Number),population_supplied=sum(population),population_implied=sum(GBD_implied_pop),.groups='drop'),z%>%group_by(year,age_id)%>%summarise(region='Asia',DALYs=sum(Number),population_supplied=sum(population),population_implied=sum(GBD_implied_pop),.groups='drop'))%>%left_join(d$w1,by='age_id')%>%group_by(region,year)%>%summarise(ASDR_supplied_population=sum(DALYs/population_supplied*1e5*w),ASDR_implied_population=sum(DALYs/population_implied*1e5*w),.groups='drop')%>%mutate(relative_difference_pct=(ASDR_implied_population/ASDR_supplied_population-1)*100)
+write_csv(a,file.path(out,'Tables/Table_S15_ASDR_population_denominator_sensitivity.csv'))
+print(a%>%filter(region=='Asia',year%in%c(1990,2023)),width=Inf);cat('Maximum absolute ASDR relative difference (%)',max(abs(a$relative_difference_pct)),'\n')
